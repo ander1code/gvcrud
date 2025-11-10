@@ -1,0 +1,137 @@
+{% extends "person/natural.html" %}
+{% block into %}
+{% load static %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <h1 style="font-weight: bold;">{% if edition %}Edition{% else %}Create{% endif %}</h1>
+                    </div>
+                    <div class="form-group">
+                        <hr>
+                     </div>
+                    <div class="form-group">
+                        {% csrf_token %}
+                    </div>
+                    <div class="form-group">
+                        {% include '_partials/_errors.html' %}
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        {{form.name}}
+                    </div>
+                    <div class="form-group">
+                        <label>CPF</label>
+                        {{form.cpf}}
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        {{form.email}}
+                    </div>
+                    <div class="form-group">
+                        <label>Income range</label>
+                        {{form.income_range}}
+                    </div>
+                    <div class="form-group">
+                        <label>Birthday</label>
+                        <div class='input-group date' id='birthday_picker'>
+                            {{ form.birthday }}
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        {{form.gender}}
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        {{form.description}}
+                    </div>
+                    {% if edition %}
+                    <div class="form-group">
+                        <label>Picture</label>
+                        <img src="{{picture_url}}" class="pull-right picture-form">
+                        {{form.picture}}
+                    </div>
+                    {% else %}
+                    <div class="form-group">
+                        <label>Picture</label>
+                        {{form.picture}}
+                    </div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label>Status</label>
+                        {{form.status}}
+                    </div>
+                    <div class="form-group">
+                        <hr>
+                    </div>
+                    <div class="form-group">
+                        {% if edition %}
+
+                            <div id="modal_edition" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title">Question</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Do you want edit this register?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary btn-100" data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-warning pull-right btn-100" name="edit"id="edit">Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="modal_deletion" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title">Question</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Do you want delete this register?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary btn-100" data-dismiss="modal">Ok</button>
+                                            <button type="submit" class="btn btn-danger pull-right btn-100" name="delete"id="delete">Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="button" value="Edit" class="btn btn-warning pull-right btn-size" data-toggle="modal" data-target="#modal_edition">
+                            <input type="button" value="Delete" class="btn btn-danger pull-right btn-size" data-toggle="modal" data-target="#modal_deletion">
+                            
+                        {% else %}
+                            <input type="submit" class="btn btn-success pull-right btn-size" value="Create" name="create" id="create">
+                            <input type="reset" class="btn btn-primary pull-right btn-size" value="Reset" name="reset" id="reset">
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'vendor/js/jquery.mask.min.js' %}"></script>
+    <script src="{% static 'vendor/js/jquery.maskMoney.min.js' %}"></script>
+
+    <script src="{% static 'vendor/js/moment.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'vendor/css/bootstrap-datetimepicker.min.css' %}">
+    <script src="{% static 'vendor/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <script src="{% static 'owner/js/form.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'owner/css/form.css' %}">
+
+{% endblock into %}

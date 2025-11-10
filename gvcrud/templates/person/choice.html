@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+{% block contents %}
+<div class="container">
+  <div class="row">
+    <div class='col-md-offset-1 col-md-10 col-md-offset-1'>
+      <div class="pull-right">
+        <br><br><br>
+        <a href="{% url 'natural-list' %}" class="btn btn-danger">Natural Person</a><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal_info_js">Legal Person</a>
+      </div>
+      <div id="modal_info_js" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Information</h4>
+            </div>
+            <div class="modal-body">
+              <p id="modal_message">Choose between natural person or legal person.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" style="width:100px;">Ok</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  
+</style>
+
+<script>
+  $(document).ready(() => {
+    $("#modal_info_js").modal("show");
+    $("#modal_info_js").on("hidden.bs.modal", () => {
+      $("#modal_message").text("Legal Person not yet implemented.");
+    });
+  });
+</script>
+
+{% endblock contents %}
+

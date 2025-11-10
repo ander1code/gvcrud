@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class='col-md-offset-1 col-md-10 col-md-offset-1'>
+                <h1 style="font-weight:bold;">Natural Person</h1>
+                {% if show_list %}
+                    <a href="{% url 'natural-list' %}" class="btn btn-primary pull-right btn-size btn-size">List</a>
+                {% else %}
+                    <a href="{% url 'natural-create' %}" class="btn btn-success pull-right btn-size">Create</a>
+                {% endif %}
+                <a href="{% url 'natural-reports' %}" class="btn btn-info pull-right btn-size btn-size">Reports</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class='col-md-offset-1 col-md-10 col-md-offset-1'>
+                <hr>
+            </div>
+        </div>
+    </div>
+    {% block into %}
+    {% endblock into %}    
+{% endblock contents %}
+
+
+
+
+

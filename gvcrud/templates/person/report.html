@@ -1,0 +1,78 @@
+{% extends "person/natural.html" %}
+{% block into %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10 col-md-offset-1">
+            <h1 class="text-center">Report</h1>
+            <hr>
+
+            <!-- === SECTION: HIGHEST AND LOWEST INCOME === -->
+            <div class="row text-center" style="margin-bottom: 20px;">
+                {% if highest_income_person %}
+                <div class="col-md-6">
+                    <div class="panel panel-success" style="padding: 5px;">
+                        <div class="panel-heading"><strong>Highest Income</strong></div>
+                        <div class="panel-body" style="display: flex; align-items: center; justify-content: center;">
+                            <a href="{% url 'natural-detail' highest_income_person.id %}" style="display: flex; align-items: center;">
+                                <img src="{{ highest_income_person.picture.url }}" class="img-thumbnail" style="width:150px; height:150px; margin-right:10px;">
+                                <div style="text-align: left;">
+                                    <strong>{{ highest_income_person.name }}</strong><br>
+                                    <small>{{ highest_income_person.cpf }}</small><br>
+                                    <span><strong>Income:</strong> R$ {{ highest_income_person.income_range }}</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if lowest_income_person %}
+                <div class="col-md-6">
+                    <div class="panel panel-danger" style="padding: 5px;">
+                        <div class="panel-heading"><strong>Lowest Income</strong></div>
+                        <div class="panel-body" style="display: flex; align-items: center; justify-content: center;">
+                            <a href="{% url 'natural-detail' lowest_income_person.id %}" style="display: flex; align-items: center;">
+                                <img src="{{ lowest_income_person.picture.url }}" class="img-thumbnail" style="width:150px; height:150px; margin-right:10px;">
+                                <div style="text-align: left;">
+                                    <strong>{{ lowest_income_person.name }}</strong><br>
+                                    <small>{{ lowest_income_person.cpf }}</small><br>
+                                    <span><strong>Income:</strong> R$ {{ lowest_income_person.income_range }}</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- === SECTION: GENERAL STATISTICS === -->
+            <div class="panel panel-info">
+                <div class="panel-heading"><strong>General Statistics</strong></div>
+                <div class="panel-body">
+                    <p><strong>Average Income:</strong> R$ {{ avg_income}}</p>
+                    <p><strong>Highest Income:</strong> R$ {{ max_income }}</p>
+                    <p><strong>Lowest Income:</strong> R$ {{ min_income }}</p>
+                    <p><strong>Total Income Sum:</strong> {{ total_income }}</p>
+                    <p><strong>Gender Count:</strong></p>
+                    <ul>
+                        <li><span class="label label-primary">Male:</span> {{ male_count }}</li>
+                        <li><span class="label label-danger">Female:</span> {{ female_count }}</li>
+                        <li><span class="label label-info">Other:</span> {{ other_count }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- === PEOPLE LIST WITH PAGINATION === -->
+            {% include "person/report_list.html" %}
+
+            <div class="form-group" style="margin-top:20px;">
+                <a href="{% url 'natural-list' %}" class="btn btn-primary pull-right btn-size btn-size">List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'owner/css/report.css' %}">
+{% endblock into %}

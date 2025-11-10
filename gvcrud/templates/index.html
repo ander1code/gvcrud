@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <script src="{% static 'vendor/js/jquery.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'vendor/css/bootstrap.min.css' %}">
+        <title>GvCrud</title>
+    </head>
+    <body>
+        {% include '_partials/_navigator.html' %}
+        
+        <div class="container"> 
+            <div class="row">
+                <div class="col-md-12">
+                    {% include '_partials/_messages.html' %}
+                </div>
+            </div>
+        </div>
+        
+        {% block contents %}
+        {% endblock contents %}
+
+        <script src="{% static 'vendor/js/bootstrap.min.js' %}"></script>
+        
+        <link rel="stylesheet" href="{% static 'owner/css/style.css' %}">
+
+        {% include "_partials/_footer.html" %}
+
+        <script src="{% static 'owner/js/script.js' %}"></script>
+    </body>
+</html>

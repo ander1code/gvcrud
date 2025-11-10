@@ -1,0 +1,114 @@
+{% load static %}
+{% load l10n %}
+
+{% if people_above_avg or people_below_avg or people_equal_avg %}
+<div class="row">
+    <div class='col-md-12'>
+        <!-- ABOVE AVERAGE -->
+        <h3>People Above Average</h3>
+        {% if people_above_avg %}
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr class="success">
+                            <th class="text-center">CPF</th>
+                            <th>Name</th>
+                            <th class="text-center">Income Range</th>
+                            <th class="text-center">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in people_above_avg %}
+                        <tr>
+                            <td class="text-center">{{ person.cpf }}</td>
+                            <td>{{ person.name }}</td>
+                            <td class="text-center">{{ person.income_range|localize }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'natural-detail' person.id %}">
+                                    <img src="{% static 'owner/images/select.png' %}" class="icon-select">
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No people above average income.</p>
+        {% endif %}
+
+        <hr>
+
+        <!-- BELOW AVERAGE -->
+        <h3>People Below Average</h3>
+        {% if people_below_avg %}
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr class="danger">
+                            <th class="text-center">CPF</th>
+                            <th>Name</th>
+                            <th class="text-center">Income Range</th>
+                            <th class="text-center">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in people_below_avg %}
+                        <tr>
+                            <td class="text-center">{{ person.cpf }}</td>
+                            <td>{{ person.name }}</td>
+                            <td class="text-center">{{ person.income_range|localize }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'natural-detail' person.id %}">
+                                    <img src="{% static 'owner/images/select.png' %}" class="icon-select">
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No people below average income.</p>
+        {% endif %}
+
+        <hr>
+
+        <!-- EQUAL AVERAGE -->
+        <h3>People With Average Income</h3>
+        {% if people_equal_avg %}
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr class="warning">
+                            <th class="text-center">CPF</th>
+                            <th>Name</th>
+                            <th class="text-center">Income Range</th>
+                            <th class="text-center">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in people_equal_avg %}
+                        <tr>
+                            <td class="text-center">{{ person.cpf }}</td>
+                            <td>{{ person.name }}</td>
+                            <td class="text-center">{{ person.income_range|localize }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'natural-detail' person.id %}">
+                                    <img src="{% static 'owner/images/select.png' %}" class="icon-select">
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No people with income equal to average.</p>
+        {% endif %}
+    </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'owner/css/report_list.css' %}">
+
+{% endif %}

@@ -1,0 +1,128 @@
+{% extends "person/natural.html" %}
+{% block into %}
+
+{% load static %}
+{% load l10n %}
+<div class="container">
+    <div class="row">
+        <div class='col-md-offset-1 col-md-10 col-md-offset-1'>
+            <div class="form-group">
+                <h1>Detail</h1>
+            </div>
+            <div class="form-group">
+                <hr>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <img src="{{person.picture.url}}" class="picture"><br>
+                </div>
+                <div class="col-md-7">
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>CPF</label>
+                                <p class="p-data">{{person.cpf}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <p class="p-data">{{person.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <p class="p-data">{{person.email}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Income Range</label>
+                                <p class="p-data">{{person.income_range|localize}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Birthday</label>
+                                <p class="p-data">{{person.birthday}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                {% if person.gender == 'M' %}
+                                    <p class="p-data">Male</p>
+                                {% elif person.gender == 'F' %}
+                                    <p class="p-data">Female</p>
+                                {% elif person.gender == 'O' %}
+                                    <p class="p-data">Other</p>
+                                {% else %}
+                                    <p class="p-data">Not informed</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <p class="p-data">{{person.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Registered at</label>
+                                <p class="p-data">{{ person.created_at|date:"d/m/Y H:i"}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                {% if person.updated_at %}
+                                    <label>Updated at</label>
+                                    <p class="p-data">{{ person.updated_at|date:"d/m/Y H:i"}}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {% if person.status %}
+                                    <p class="p-data btn btn-success btn-active">Actived</p>
+                                {% else %}
+                                    <p class="p-data btn btn-danger btn-inactive">Inactivated</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-md-offset-1 col-md-10 col-md-offset-1'>
+            <div class="form-group">
+                <a href="{% url 'natural-update' person.id %}" class="btn btn-warning pull-right btn-size">Edit</a>    
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'owner/css/detail.css' %}">
+
+{% endblock into %}

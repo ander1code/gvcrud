@@ -1,0 +1,286 @@
+/* Geral */
+body {
+  padding-top: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  background-color:#f1fbf6;
+}
+
+/* Navbar */
+body > .navbar {
+  -webkit-transition: background-color .3s ease-in;
+  transition: background-color .3s ease-in;
+  background-color: #092e20; /* verde Django escuro */
+  border: none;
+}
+
+body > .navbar .navbar-brand {
+  padding: 13.5px 15px 12.5px;
+  color: #fff;
+}
+
+body > .navbar .navbar-brand > img {
+  display: inline;
+  margin: 0 10px;
+  height: 100%;
+}
+
+@media (min-width:768px) {
+  body > .navbar-transparent {
+    background-color: transparent;
+  }
+  body > .navbar-transparent .navbar-nav > .open > a {
+    background-color: transparent !important;
+  }
+}
+
+/* Home */
+#home {
+  padding-top: 0;
+}
+
+/* Banner / Splash */
+.splash {
+  padding: 9em 0 2em;
+  background-color: #092e20;
+  background-image: url('https://static.djangoproject.com/img/logos/django-logo-negative.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  color: #fff;
+  text-align: center;
+}
+
+.splash .logo {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.splash h1 {
+  font-size: 3em;
+  margin: 0.5em 0 1em;
+}
+
+.splash #social,
+.splash .alert {
+  margin: 2em 0;
+}
+
+/* Seções */
+.section-tout {
+  padding: 4em 0 3em;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  background-color: #eaf1f1;
+}
+
+.section-tout .fa {
+  margin-right: .5em;
+}
+
+.section-tout p {
+  margin-bottom: 3em;
+}
+
+.section-preview {
+  padding: 4em 0 4em;
+}
+
+.section-preview .preview {
+  margin-bottom: 4em;
+  background-color: #eaf1f1;
+}
+
+.section-preview .preview .image {
+  position: relative;
+}
+
+.section-preview .preview .image:before {
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  content: "";
+  pointer-events: none;
+}
+
+.section-preview .preview .options {
+  padding: 1em 2em 2em;
+  border: 1px solid rgba(0,0,0,.05);
+  border-top: none;
+  text-align: center;
+}
+
+.section-preview .preview .options p {
+  margin-bottom: 2em;
+}
+
+.section-preview .dropdown-menu {
+  text-align: left;
+}
+
+.section-preview .lead {
+  margin-bottom: 2em;
+}
+
+@media (max-width:767px) {
+  .section-preview .image img {
+    width: 100%;
+  }
+}
+
+/* Footer */
+footer {
+  margin: 5em 0;
+  background-color: #092e20;
+  color: #fff;
+  text-align: center;
+  padding: 2em 0;
+}
+
+footer li {
+  float: left;
+  margin-right: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+footer p {
+  clear: left;
+  margin-bottom: 0;
+}
+
+/* Sponsor / Ads */
+.sponsor #carbonads {
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.sponsor .carbon-text {
+  display: block;
+  margin-top: 1em;
+  font-size: 12px;
+}
+
+.sponsor .carbon-poweredby {
+  float: right;
+  margin-top: 1em;
+  font-size: 10px;
+}
+
+/* Ajustes responsivos */
+@media (max-width:767px) {
+  .splash {
+    padding-top: 4em;
+  }
+  .splash .logo {
+    width: 100px;
+  }
+  .splash h1 {
+    font-size: 2em;
+  }
+  #banner {
+    margin-bottom: 2em;
+    text-align: center;
+  }
+}
+
+.footer {
+  background-color: #e1fff4;
+  border-top: 1px solid #ddd;
+  color: #555;             
+  font-size: 16px;         
+}
+.navbar-default .navbar-nav>li>a {
+  color: white;
+  font-size: 20px;
+}
+
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-brand {
+  margin-top: 8%;
+  color: #fff;
+}
+
+.class-login{
+  margin-top: 20px;
+}
+
+a {
+  color: white !important;
+  text-decoration: none;
+}
+
+label{
+  color:#0C4B33;
+  font-weight:bold;
+}
+
+.text-muted{
+  font-weight:bold;
+}
+
+.fade-out {
+  transition: opacity 3s ease-out;
+  opacity: 0;
+}
+
+.mt-10{
+  margin-top: 10px;
+}
+
+.modal-header{
+  background-color:#010c08;
+  color:white;
+}
+.modal-footer{
+  background-color:#C9F0DD;
+}
+.modal-content{
+  background-color:white;
+}
+
+.jumbotron{
+  margin-top:10%;
+  border: 5px solid black;
+  border-radius: 7px;
+  background-color: #1d915c;
+  color:white;
+}
+
+.title-jumbotron{
+  font-size:50px !important;
+  font-weight:bold  !important;
+}
+
+.m-20{
+  margin:20px;
+}
+
+.close{
+  color:white !important;
+}
+
+.btn-size{
+  width:150px !important;
+}
+
+.form-control{
+  border:2px solid #93D7B7;
+}
+
+h1, h2, h3, h4, h5, h6{
+  color: #0C4B33;
+}
+
+.modal-title{
+  color:white;
+}
+
+hr{
+  border: none; 
+  height: 1.5px; 
+  background-color: #0C4B33;
+}
